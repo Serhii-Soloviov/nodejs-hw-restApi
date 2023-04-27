@@ -37,6 +37,7 @@ const schemaPost = Joi.object({
     .pattern(dateRegexp)
     .messages({ "string.pattern.base": `Phone number must have 10 digits.` })
     .required(),
+  favorite: Joi.boolean(),
 });
 
 const schemaPut = Joi.object({
@@ -46,6 +47,7 @@ const schemaPut = Joi.object({
     .pattern(dateRegexp)
     .messages({ "string.pattern.base": `Phone number must have 10 digits.` })
     .required(),
+  favorite: Joi.boolean(),
 }).min(1);
 
 const updateFavoriteSchema = Joi.object({
