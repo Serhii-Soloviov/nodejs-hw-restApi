@@ -9,6 +9,13 @@ const {
 const { schemas } = require("../../models/user");
 const router = express.Router();
 
+router.get("/verify/:verificationToken", ctrlWrapper(ctrl.verifyUserEmail));
+router.post(
+  "/verify",
+  validateBody(schemas.verifyEmailSchema),
+  ctrlWrapper(ctrl.resendEmail)
+);
+
 router.post(
   "/register",
   validateBody(schemas.registerSchema),
