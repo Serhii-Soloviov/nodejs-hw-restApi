@@ -15,6 +15,7 @@ const contactSchema = new Schema(
     },
     phone: {
       type: String,
+      match: dateRegexp,
     },
     favorite: {
       type: Boolean,
