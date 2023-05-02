@@ -40,7 +40,7 @@ router.put(
   ctrlWrapper(ctrl.updateContactById)
 );
 router.patch(
-  "/:contactId",
+  "/:contactId/favorite",
   authenticate,
   isValidId,
   validateBody(schemas.updateFavoriteSchema),

@@ -3,11 +3,11 @@ const { HttpError } = require("../helpers");
 const validateBody = (schema) => {
   const func = (req, res, next) => {
     const { error } = schema.validate(req.body);
-    if (error && req.method === "POST") {
+    if (error || req.method === "PATCH" && req.method === "POST") {
       const invalidField = error.details[0].path[0];
       next(HttpError(400, `Missing required ${invalidField} field`));
     }
-    if (error && req.method === "PUT") {
+    if (error && req.method === "PUT" && req.method === "PATCH") {
       next(HttpError(400, "missing fields"));
     }
     next();
